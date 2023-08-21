@@ -5,34 +5,36 @@
 //  Created by Syed Raza on 8/21/23.
 //
 
+
 import Foundation
 import Combine
 
 class CatsService {
-    var cancelable = Set<AnyCancelable>()
-     let urlString = "https://647e1a94af984710854af0ac.mockapi.io/api/v1/Cats"
-    func fetchCats()->Future<[Cats], Error> {
+    var cancelable = Set<AnyCancellable>()
+    let urlString = "https://647e1a94af984710854af0ac.mockapi.io/api/v1/Cats"
+    
+    func fetchCats() -> Future<[Cats], Error> {
         return Future<[Cats], Error> { promise in
-            guard let url = URL(string: urlString) else {
-                let error = NSError(Domain: "invalidUrl", code: 0, catInfo: nil)
-            promise (error)
+            guard let url = URL(string: self.urlString) else {
+                let error = NSError(domain: "invalidUrl", code: 0, userInfo: nil)
+                promise(.failure(error))
                 return
             }
-            urlSession.shared.dataTaskPublisher(for: url)
-                .map{$0.data}
-                .decode(type: [Cats])
-                .receive(on: mainQueue)
-                .sink(receieveCompletion: { completion in
+            
+            URLSession.shared.dataTaskPublisher(for: url)
+                .map(\.data)
+                .decode(type: [Cats].self, decoder: JSONDecoder())
+                .receive(on: DispatchQueue.main)
+                .sink(receiveCompletion: { completion in
                     switch completion {
                     case .finished: break
-                    case .failure ( let error): print(error.LocalizedError)
-                        
+                    case .failure(let error):
+                        print(error.localizedDescription)
                     }
-                    
-                }, recieveValue : { response in
-                    promise(.sucess(response))
+                }, receiveValue: { response in
+                    promise(.success(response))
                 })
-                .store(in: &cancelable)
+                .store(in: &self.cancelable)
         }
     }
 }

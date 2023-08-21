@@ -9,16 +9,15 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var viewModel = SchoolViewModel()
+    @ObservedObject var viewModel = CatsViewModel()
 
     var body: some View {
         NavigationView {
             ScrollView {
                 LazyVStack(spacing: 10) {
-                    ForEach(viewModel.cats, id: \.self) { school in
-                      
-                            VStack{
-                                Text(school.name)
+                    ForEach(viewModel.allcats, id: \.self) { cat in
+                      VStack{
+                                Text(cat.name)
                             } .font(.headline)
                                 .foregroundColor(.blue)
                                 .padding()
@@ -30,13 +29,12 @@ struct ContentView: View {
                 }
                 .padding(EdgeInsets(top: 20, leading: 10, bottom: 20, trailing: 10))
             }
-            .navigationTitle("NYC School List")
+            .navigationTitle("CAT's Data Base")
             .onAppear{
-                
+                viewModel.getCats()
             }
         }
     }
-}
 
 
 

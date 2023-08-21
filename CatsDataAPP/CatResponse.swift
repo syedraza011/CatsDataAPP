@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct Cats: Decodable {
+struct Cats: Decodable, Hashable {
     let id: Int
     let breed: String
     let address: String
