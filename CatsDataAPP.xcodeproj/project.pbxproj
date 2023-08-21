@@ -13,6 +13,10 @@
 		E96A76E52A94192000C2EF37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E96A76E32A94192000C2EF37 /* Main.storyboard */; };
 		E96A76E72A94192100C2EF37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E96A76E62A94192100C2EF37 /* Assets.xcassets */; };
 		E96A76EA2A94192100C2EF37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E96A76E82A94192100C2EF37 /* LaunchScreen.storyboard */; };
+		E96A76F22A94197400C2EF37 /* CatResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96A76F12A94197400C2EF37 /* CatResponse.swift */; };
+		E96A76F42A94199500C2EF37 /* CatsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96A76F32A94199500C2EF37 /* CatsService.swift */; };
+		E96A76F62A9419CB00C2EF37 /* CatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96A76F52A9419CB00C2EF37 /* CatViewModel.swift */; };
+		E96A76F82A941A2E00C2EF37 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96A76F72A941A2E00C2EF37 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		E96A76E62A94192100C2EF37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E96A76E92A94192100C2EF37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E96A76EB2A94192100C2EF37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E96A76F12A94197400C2EF37 /* CatResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatResponse.swift; sourceTree = "<group>"; };
+		E96A76F32A94199500C2EF37 /* CatsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsService.swift; sourceTree = "<group>"; };
+		E96A76F52A9419CB00C2EF37 /* CatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatViewModel.swift; sourceTree = "<group>"; };
+		E96A76F72A941A2E00C2EF37 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +71,10 @@
 				E96A76E62A94192100C2EF37 /* Assets.xcassets */,
 				E96A76E82A94192100C2EF37 /* LaunchScreen.storyboard */,
 				E96A76EB2A94192100C2EF37 /* Info.plist */,
+				E96A76F12A94197400C2EF37 /* CatResponse.swift */,
+				E96A76F32A94199500C2EF37 /* CatsService.swift */,
+				E96A76F52A9419CB00C2EF37 /* CatViewModel.swift */,
+				E96A76F72A941A2E00C2EF37 /* ContentView.swift */,
 			);
 			path = CatsDataAPP;
 			sourceTree = "<group>";
@@ -140,7 +152,11 @@
 			files = (
 				E96A76E22A94192000C2EF37 /* ViewController.swift in Sources */,
 				E96A76DE2A94192000C2EF37 /* AppDelegate.swift in Sources */,
+				E96A76F82A941A2E00C2EF37 /* ContentView.swift in Sources */,
 				E96A76E02A94192000C2EF37 /* SceneDelegate.swift in Sources */,
+				E96A76F22A94197400C2EF37 /* CatResponse.swift in Sources */,
+				E96A76F42A94199500C2EF37 /* CatsService.swift in Sources */,
+				E96A76F62A9419CB00C2EF37 /* CatViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
