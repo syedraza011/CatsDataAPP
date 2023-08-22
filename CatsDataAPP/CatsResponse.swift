@@ -6,11 +6,16 @@
 //
 
 import Foundation
-struct Cats: Decodable, Hashable {
+struct CatResponse: Decodable,Identifiable, Hashable {
     let id: Int
     let breed: String
     let address: String
     let name: String
-    let url: String
+    let photo: String
     
 }
+
+
+
+
+

@@ -15,10 +15,10 @@ struct ContentView: View {
         NavigationView {
             ScrollView {
                 LazyVStack(spacing: 10) {
-                    ForEach(viewModel.allcats, id: \.self) { cat in
+                    ForEach(viewModel.allCats, id: \.self) { cat in
                       VStack{
-                                Text(cat.name)
-                            } .font(.headline)
+                          Text("\(cat.name)")
+                          AsyncImage(url: URL(string: cat.photo))                            } .font(.headline)
                                 .foregroundColor(.blue)
                                 .padding()
                                 .frame(maxWidth: .infinity, maxHeight: .infinity)
