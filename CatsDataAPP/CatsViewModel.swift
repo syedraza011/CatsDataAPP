@@ -9,7 +9,7 @@ import Combine
 
 class CatsViewModel: ObservableObject {
     let service = CatsService()
-    @Published var allCats = [CatsResponse]() // Make sure to use the correct type here
+    @Published var allCats = [CatsResponse]()
     @Published var state: AsyncState = .initial
 
     var cancellables: Set<AnyCancellable> = []
@@ -26,9 +26,9 @@ class CatsViewModel: ObservableObject {
                     print("Fetch Failed: \(err.localizedDescription)")
                    
                 }
-            }, receiveValue: { [weak self] catsResponse in
+            }, receiveValue: { [weak self] response in
                
-                self?.allCats = catsResponse
+                self?.allCats = response
             })
             .store(in: &cancellables)
     }

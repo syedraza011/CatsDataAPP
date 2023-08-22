@@ -8,13 +8,44 @@
 
 import SwiftUI
 
+//struct ContentView: View {
+//    @ObservedObject var viewModel = CatsViewModel()
+//
+//    var body: some View {
+//        NavigationView {
+//
+//
+//            VStack {
+//                if viewModel.allCats.isEmpty {
+//                    ProgressView("Loading...")
+//                        .padding()
+//                } else {
+//                    List(viewModel.allCats, id: \.self) { cat in
+//                        Text("\(cat.name)")
+//                        if  (cat.photo.isEmpty || cat.photo.isLoading) {
+//                            ProgressView("Loading...")
+//                        }else
+//                        {
+//                            AsyncImage(url: URL(string: cat.photo))
+//                        }
+//                    }
+//                    .listStyle(GroupedListStyle())
+//                }
+//            }
+//            .navigationBarTitle("Cats")
+//            .onAppear {
+//                viewModel.getCats()
+//            }
+//        }
+//    }
+//}
+import SwiftUI
+
 struct ContentView: View {
     @ObservedObject var viewModel = CatsViewModel()
-    
+
     var body: some View {
         NavigationView {
-          
-          
             VStack {
                 if viewModel.allCats.isEmpty {
                     ProgressView("Loading...")
@@ -22,9 +53,34 @@ struct ContentView: View {
                 } else {
                     List(viewModel.allCats, id: \.self) { cat in
                         Text("\(cat.name)")
-                        AsyncImage(url: URL(string: cat.photo))
+                        Text("\(cat.breed)")
+                        Text("\(cat.address)")
+                        
+                        if cat.photo.isEmpty{
+                            ProgressView("Loading...")
+                        } else {
+                            AsyncImage(url: URL(string: cat.photo)) { phase in
+                                switch phase {
+                                case .empty:
+                                    Text("Loading...")
+                                case .success(let image):
+                                    image
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                case .failure(_):
+                                   Image(systemName: "photo.fill")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        
+                                @unknown default:
+                                    Text("Unknown state")
+                                
+                                }
+                            }
+                        }
                     }
-                    .listStyle(GroupedListStyle())
+                
+                   
                 }
             }
             .navigationBarTitle("Cats")
@@ -32,7 +88,9 @@ struct ContentView: View {
                 viewModel.getCats()
             }
         }
+       
     }
+
 }
 
 struct ContentView_Previews: PreviewProvider {
