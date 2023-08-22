@@ -8,9 +8,8 @@ import Foundation
 import Combine
 
 class CatsViewModel: ObservableObject {
-    
     let service = CatsService()
-    @Published var allCats = [CatResponse]() // Make sure to use the correct type here
+    @Published var allCats = [CatsResponse]() // Make sure to use the correct type here
     @Published var state: AsyncState = .initial
 
     var cancellables: Set<AnyCancellable> = []
@@ -34,6 +33,7 @@ class CatsViewModel: ObservableObject {
             .store(in: &cancellables)
     }
 }
+
 
 
 

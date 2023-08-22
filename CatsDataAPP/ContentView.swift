@@ -10,37 +10,34 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var viewModel = CatsViewModel()
-
+    
     var body: some View {
         NavigationView {
-            ScrollView {
-                LazyVStack(spacing: 10) {
-                    ForEach(viewModel.allCats, id: \.self) { cat in
-                      VStack{
-                          Text("\(cat.name)")
-                          AsyncImage(url: URL(string: cat.photo))                            } .font(.headline)
-                                .foregroundColor(.blue)
-                                .padding()
-                                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                                .background(Color.gray.opacity(0.2))
-                                .cornerRadius(10)
-                        }
+          
+          
+            VStack {
+                if viewModel.allCats.isEmpty {
+                    ProgressView("Loading...")
+                        .padding()
+                } else {
+                    List(viewModel.allCats, id: \.self) { cat in
+                        Text("\(cat.name)")
+                        AsyncImage(url: URL(string: cat.photo))
                     }
+                    .listStyle(GroupedListStyle())
                 }
-                .padding(EdgeInsets(top: 20, leading: 10, bottom: 20, trailing: 10))
             }
-            .navigationTitle("CAT's Data Base")
-            .onAppear{
+            .navigationBarTitle("Cats")
+            .onAppear {
                 viewModel.getCats()
             }
         }
     }
-
-
-
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
+
