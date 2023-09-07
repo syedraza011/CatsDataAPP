@@ -5,40 +5,6 @@
 //  Created by Syed Raza on 08/21/2023
 //
 
-
-import SwiftUI
-
-//struct ContentView: View {
-//    @ObservedObject var viewModel = CatsViewModel()
-//
-//    var body: some View {
-//        NavigationView {
-//
-//
-//            VStack {
-//                if viewModel.allCats.isEmpty {
-//                    ProgressView("Loading...")
-//                        .padding()
-//                } else {
-//                    List(viewModel.allCats, id: \.self) { cat in
-//                        Text("\(cat.name)")
-//                        if  (cat.photo.isEmpty || cat.photo.isLoading) {
-//                            ProgressView("Loading...")
-//                        }else
-//                        {
-//                            AsyncImage(url: URL(string: cat.photo))
-//                        }
-//                    }
-//                    .listStyle(GroupedListStyle())
-//                }
-//            }
-//            .navigationBarTitle("Cats")
-//            .onAppear {
-//                viewModel.getCats()
-//            }
-//        }
-//    }
-//}
 import SwiftUI
 
 struct ContentView: View {
